@@ -87,6 +87,7 @@ export default function Home() {
         <div
           ref={gridRef}
           className="
+          bg-cell-background
           grid grid-cols-9 grid-rows-9
           aspect-square
         ">
@@ -100,15 +101,15 @@ export default function Home() {
                 key={index}
                 onMouseDown={() => handleCellClick(index)}
                 className={`
-                text-numbers text-base md:text-2xl xl:text-4xl
+                text-cell-number text-base md:text-2xl xl:text-4xl
                 flex items-center justify-center aspect-square
                 select-none
-                border-separators
-                ${index === selected ? "bg-selected-cell" : ""}
-                ${col === 0 ? "border-l-4 border-l-separators-thick" : ""}
-                ${row === 0 ? "border-t-4 border-t-separators-thick" : ""}
-                ${col % 3 === 2 ? "border-r-4 border-r-separators-thick" : "border-r"}
-                ${row % 3 === 2 ? "border-b-4 border-b-separators-thick" : "border-b"}
+                border-separator-thin
+                ${index === selected ? "bg-cell-selected" : ""}
+                ${col === 0 ? "border-l-4 border-l-separator-thick" : ""}
+                ${row === 0 ? "border-t-4 border-t-separator-thick" : ""}
+                ${col % 3 === 2 ? "border-r-4 border-r-separator-thick" : "border-r"}
+                ${row % 3 === 2 ? "border-b-4 border-b-separator-thick" : "border-b"}
                 `}
               >
                 {Number(cell) === 0 ? "" : cell}

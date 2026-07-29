@@ -1,34 +1,35 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-  --separators: #d1d5dc;
-  --separators-thick: #d1d5dc;
-  --numbers: #27272a;
-  --selected-cell: #8ae6dc;
+  --page-background: #ffffff;
+  --cell-background: #ffffff;
+  --separator-thin: #d1d5dc;
+  --separator-thick: #d1d5dc;
+  --cell-number: #27272a;
+  --cell-selected: #8ae6dc;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-    --separators: #27272a;
-    --separators-thick: #27272a;
-    --numbers: #d1d5dc;
-    --selected-cell: #01332e;
+    --page-background: #0a0a0a;
+    --cell-background: #0a0a0a;
+    --separator-thin: #27272a;
+    --separator-thick: #27272a;
+    --cell-number: #d1d5dc;
+    --cell-selected: #01332e;
   }
 }
 
 @theme inline {
-  --color-separators: var(--separators);
-  --color-separators-thick: var(--separators-thick);
-  --color-numbers: var(--numbers);
-  --color-selected-cell: var(--selected-cell);
+  --color-page-background: var(--page-background);
+  --color-cell-background: var(--cell-background);
+  --color-separator-thin: var(--separator-thin);
+  --color-separator-thick: var(--separator-thick);
+  --color-cell-number: var(--cell-number);
+  --color-cell-selected: var(--cell-selected);
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
+  background: var(--page-background);
   font-family: Arial, Helvetica, sans-serif;
 }
