@@ -3,20 +3,25 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --separators: #d1d5dc;
+  --separators-thick: #d1d5dc;
+  --numbers: #27272a;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
     --foreground: #ededed;
+    --separators: #27272a;
+    --separators-thick: #27272a;
+    --numbers: #d1d5dc;
   }
+}
+
+@theme inline {
+  --color-separators: var(--separators);
+  --color-separators-thick: var(--separators-thick);
+  --color-numbers: var(--numbers);
 }
 
 body {
