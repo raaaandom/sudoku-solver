@@ -57,6 +57,20 @@ export default function Home() {
     return () => window.removeEventListener("keydown", handleEscapeKey);
   })
 
+  useEffect(() => {
+    function handleNumberKeys(e: KeyboardEvent) {
+      if (selected === -1) return;
+      if (!"0123456789".includes(e.key)) return;
+
+      const newBoard = [...board];
+      newBoard[selected] = e.key;
+      setBoard(newBoard);
+    }
+
+    window.addEventListener("keydown", handleNumberKeys);
+    return () => window.removeEventListener("keydown", handleNumberKeys);
+  })
+
   return (
     // Horizontal centering
     <div
@@ -73,7 +87,7 @@ export default function Home() {
         <div
           ref={gridRef}
           className="
-          grid grid-cols-9
+          grid grid-cols-9 grid-rows-9
           aspect-square
         ">
           {board.map((cell, index) => {
@@ -86,11 +100,10 @@ export default function Home() {
                 key={index}
                 onMouseDown={() => handleCellClick(index)}
                 className={`
+                text-numbers text-base md:text-2xl xl:text-4xl
+                flex items-center justify-center aspect-square
                 select-none
                 border-separators
-                text-numbers
-                text-base md:text-2xl xl:text-4xl
-                flex items-center justify-center
                 ${index === selected ? "bg-selected-cell" : ""}
                 ${col === 0 ? "border-l-4 border-l-separators-thick" : ""}
                 ${row === 0 ? "border-t-4 border-t-separators-thick" : ""}
