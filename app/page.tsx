@@ -24,51 +24,45 @@ export default function Home() {
   })
 
   useEffect(() => {
-    function handleArrowKeys(e: KeyboardEvent) {
+    function handleKeyDown(e: KeyboardEvent) {
       if (selected === -1) return;
 
-      let offset = 0;
+      const num_keys = "0123456789";
+      const move_keys = ["ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight"];
 
-      if (e.key === 'ArrowRight' && selected % 9 === 8) return;
-      if (e.key === 'ArrowLeft' && selected % 9 === 0) return;
-
-      if (e.key === 'ArrowLeft') offset = -1;
-      else if (e.key === 'ArrowRight') offset = +1;
-      else if (e.key === 'ArrowUp') offset = -9;
-      else if (e.key === 'ArrowDown') offset = +9;
-
-      if (selected + offset >= 0 && selected + offset < board.length) {
-        setSelected(selected + offset);
+      // number input
+      if (num_keys.includes(e.key)) {
+        const newBoard = [...board];
+        newBoard[selected] = e.key;
+        setBoard(newBoard);
+        return;
       }
-    }
-
-    window.addEventListener("keydown", handleArrowKeys);
-    return () => window.removeEventListener("keydown", handleArrowKeys);
-  })
-
-  useEffect(() => {
-    function handleEscapeKey(e: KeyboardEvent) {
-      if (e.key === 'Escape') {
+      // escape deselection
+      else if (e.key === 'Escape') {
         setSelected(-1);
+        return;
       }
+      // move selection
+      else if (move_keys.includes(e.key)) {
+        let offset = 0;
+
+        if (e.key === 'ArrowRight' && selected % 9 === 8) return;
+        if (e.key === 'ArrowLeft' && selected % 9 === 0) return;
+
+        if (e.key === 'ArrowLeft') offset = -1;
+        else if (e.key === 'ArrowRight') offset = +1;
+        else if (e.key === 'ArrowUp') offset = -9;
+        else if (e.key === 'ArrowDown') offset = +9;
+
+        if (selected + offset >= 0 && selected + offset < board.length) {
+          setSelected(selected + offset);
+        }
+      }
+
     }
 
-    window.addEventListener("keydown", handleEscapeKey);
-    return () => window.removeEventListener("keydown", handleEscapeKey);
-  })
-
-  useEffect(() => {
-    function handleNumberKeys(e: KeyboardEvent) {
-      if (selected === -1) return;
-      if (!"0123456789".includes(e.key)) return;
-
-      const newBoard = [...board];
-      newBoard[selected] = e.key;
-      setBoard(newBoard);
-    }
-
-    window.addEventListener("keydown", handleNumberKeys);
-    return () => window.removeEventListener("keydown", handleNumberKeys);
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
   })
 
   return (
@@ -111,7 +105,7 @@ export default function Home() {
                 ${row % 3 === 2 ? "border-b-4 border-b-separators-thick" : "border-b"}
                 `}
               >
-                {cell === 0 ? "" : cell}
+                {Number(cell) === 0 ? "" : cell}
               </div>
             );
           })}
