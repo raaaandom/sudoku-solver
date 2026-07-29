@@ -27,8 +27,8 @@ export default function Home() {
     function handleKeyDown(e: KeyboardEvent) {
       if (selected === -1) return;
 
-      const num_keys = "0123456789";
-      const move_keys = ["ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight"];
+      const num_keys = '0123456789';
+      const move_keys = ['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight'];
 
       // number input
       if (num_keys.includes(e.key)) {
