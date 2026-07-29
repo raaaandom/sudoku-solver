@@ -1,25 +1,46 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState, useRef } from "react";
 
 export default function Home() {
 
   const [board, setBoard] = useState(Array(81).fill(0));
+  const [selected, setSelected] = useState(-1);
+
+  const gridRef = useRef<HTMLDivElement>(null);
+
+  function handleCellClick(index: number) {
+    setSelected(index);
+  }
+
+  useEffect(() => {
+    function handleClickOutside(e: MouseEvent) {
+      if (gridRef.current && !gridRef.current.contains(e.target as Node))
+        setSelected(-1);
+    }
+
+    window.addEventListener("mousedown", handleClickOutside)
+    return () => window.removeEventListener("mousedown", handleClickOutside)
+  })
 
   return (
     // Horizontal centering
-    <div className="
-    min-h-screen flex flex-col items-center
+    <div
+      className="
+      min-h-screen flex flex-col items-center
     ">
       {/* Responsive */}
-      <div className="
-      min-h-screen flex flex-col justify-center gap-2
-      w-90 md:w-135 xl:w-160
+      <div
+        className="
+        min-h-screen flex flex-col justify-center gap-2
+        w-90 md:w-135 xl:w-160
       ">
         {/* Grid wrapper */}
-        <div className="
-        grid grid-cols-9
-        aspect-square
+        <div
+          ref={gridRef}
+          className="
+          grid grid-cols-9
+          aspect-square
         ">
           {board.map((cell, index) => {
 
@@ -29,12 +50,14 @@ export default function Home() {
             return (
               <div
                 key={index}
+                onMouseDown={() => handleCellClick(index)}
                 className={`
                 select-none
                 border-separators
                 text-numbers
                 text-base md:text-2xl xl:text-4xl
                 flex items-center justify-center
+                ${index === selected ? "bg-selected-cell" : ""}
                 ${col === 0 ? "border-l-4 border-l-separators-thick" : ""}
                 ${row === 0 ? "border-t-4 border-t-separators-thick" : ""}
                 ${col % 3 === 2 ? "border-r-4 border-r-separators-thick" : "border-r"}
@@ -47,8 +70,9 @@ export default function Home() {
           })}
         </div>
         {/* Controls wrapper */}
-        <div className="
-        border-2 border-blue-500 text-center
+        <div
+          className="
+          border-2 border-blue-500 text-center
         ">
           {/* Controls */}
           Comandi
