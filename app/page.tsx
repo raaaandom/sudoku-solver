@@ -25,6 +25,8 @@ export default function Home() {
 
   useEffect(() => {
     function handleArrowKeys(e: KeyboardEvent) {
+      if (selected === -1) return;
+
       let offset = 0;
 
       if (e.key === 'ArrowRight' && selected % 9 === 8) return
@@ -36,12 +38,23 @@ export default function Home() {
       else if (e.key === 'ArrowDown') offset = +9;
 
       if (selected + offset >= 0 && selected + offset < board.length) {
-        setSelected(selected + offset)
+        setSelected(selected + offset);
       }
     }
 
     window.addEventListener("keydown", handleArrowKeys);
     return () => window.removeEventListener("keydown", handleArrowKeys);
+  })
+
+  useEffect(() => {
+    function handleEscapeKey(e: KeyboardEvent) {
+      if (e.key === 'Escape') {
+        setSelected(-1);
+      }
+    }
+
+    window.addEventListener("keydown", handleEscapeKey);
+    return () => window.removeEventListener("keydown", handleEscapeKey);
   })
 
   return (
