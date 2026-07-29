@@ -23,6 +23,27 @@ export default function Home() {
     return () => window.removeEventListener("mousedown", handleClickOutside);
   })
 
+  useEffect(() => {
+    function handleArrowKeys(e: KeyboardEvent) {
+      let offset = 0;
+
+      if (e.key === 'ArrowRight' && selected % 9 === 8) return
+      if (e.key === 'ArrowLeft' && selected % 9 === 0) return
+
+      if (e.key === 'ArrowLeft') offset = -1;
+      else if (e.key === 'ArrowRight') offset = +1;
+      else if (e.key === 'ArrowUp') offset = -9;
+      else if (e.key === 'ArrowDown') offset = +9;
+
+      if (selected + offset >= 0 && selected + offset < board.length) {
+        setSelected(selected + offset)
+      }
+    }
+
+    window.addEventListener("keydown", handleArrowKeys);
+    return () => window.removeEventListener("keydown", handleArrowKeys);
+  })
+
   return (
     // Horizontal centering
     <div
