@@ -32,15 +32,14 @@ export default function Home() {
 
       // number input
       if (num_keys.includes(e.key)) {
+        // TODO: move to a dedicated function
         const newBoard = [...board];
         newBoard[selected] = e.key;
         setBoard(newBoard);
-        return;
       }
       // escape deselection
       else if (e.key === 'Escape') {
         setSelected(-1);
-        return;
       }
       // move selection
       else if (move_keys.includes(e.key)) {
@@ -57,6 +56,13 @@ export default function Home() {
         if (selected + offset >= 0 && selected + offset < board.length) {
           setSelected(selected + offset);
         }
+      }
+      // number deletion
+      else if (e.key === 'Backspace') {
+        // TODO: move to a dedicated function
+        const newBoard = [...board];
+        newBoard[selected] = 0;
+        setBoard(newBoard);
       }
 
     }
