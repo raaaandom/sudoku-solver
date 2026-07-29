@@ -19,8 +19,8 @@ export default function Home() {
         setSelected(-1);
     }
 
-    window.addEventListener("mousedown", handleClickOutside)
-    return () => window.removeEventListener("mousedown", handleClickOutside)
+    window.addEventListener("mousedown", handleClickOutside);
+    return () => window.removeEventListener("mousedown", handleClickOutside);
   })
 
   return (
