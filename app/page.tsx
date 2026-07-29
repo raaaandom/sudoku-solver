@@ -29,8 +29,8 @@ export default function Home() {
 
       let offset = 0;
 
-      if (e.key === 'ArrowRight' && selected % 9 === 8) return
-      if (e.key === 'ArrowLeft' && selected % 9 === 0) return
+      if (e.key === 'ArrowRight' && selected % 9 === 8) return;
+      if (e.key === 'ArrowLeft' && selected % 9 === 0) return;
 
       if (e.key === 'ArrowLeft') offset = -1;
       else if (e.key === 'ArrowRight') offset = +1;
