@@ -120,10 +120,31 @@ export default function Home() {
         {/* Controls wrapper */}
         <div
           className="
-          border-2 border-blue-500 text-center
+          flex flex-row gap-3 px-1 justify-center
         ">
-          {/* Controls */}
-          Comandi
+          {/* Run */}
+          <button
+            className="
+            bg-blue-500 text-white
+            py-2 px-12 rounded-md
+            font-bold
+          ">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.347a1.125 1.125 0 0 1 0 1.972l-11.54 6.347a1.125 1.125 0 0 1-1.667-.986V5.653Z" />
+            </svg>
+          </button>
+          {/* Clear */}
+          <button
+            onClick={() => setBoard(Array(81).fill(0))}
+            className="
+            bg-red-500 text-white
+            py-2 px-4 rounded-md
+            font-bold
+          ">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+            </svg>
+          </button>
         </div>
       </div>
     </div>
