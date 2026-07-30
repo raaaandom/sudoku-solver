@@ -1,36 +1,31 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Sudoku Solver
 
-## Getting Started
+A fast, interactive web-based Sudoku solver built with React and Tailwind CSS on the Next.js framework. The app allows you to input custom Sudoku puzzles and solves them instantly using Donald Knuth's **Dancing Links (DLX)** algorithm.
 
-First, run the development server:
+## Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- **Blazing Fast Solving:** Uses the highly efficient Algorithm X / Dancing Links (DLX) to find the solution instantly.
+- **Intuitive Keyboard Navigation:** Fully supports keyboard inputs for a seamless user experience:
+  - `Arrow Keys`: Navigate through the grid.
+  - `1-9`: Input numbers into the cells.
+  - `0` or `Backspace`: Clear the selected cell.
+  - `Escape`: Deselect the current cell.
+- **Responsive UI:** Styled with Tailwind CSS to ensure the 9x9 grid scales beautifully across mobile, tablet, and desktop screens.
+- **Clean Design:** Features standard Sudoku 3x3 sub-grid borders, active cell highlighting, and simple run/clear controls.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Tech Stack
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- **Framework:** Next.js
+- **Styling:** Tailwind CSS
+- **Language:** TypeScript
+- **Algorithm:** Dancing Links (Algorithm X)
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## How to Use
 
-## Learn More
+1. **Input the Puzzle:** Click on any cell in the grid to select it.
+2. **Enter Numbers:** Type numbers based on your puzzle. Use the arrow keys to quickly move around the board.
+3. **Solve:** Click the **Run** button to instantly calculate and display the solution.
+4. **Reset:** Click the **Clear** button to wipe the board completely and start over.
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Known Issues
+There is no way of inputting numbers from mobile. I'm working on a fix, don't worry!
