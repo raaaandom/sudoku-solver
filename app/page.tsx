@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState, useRef } from "react";
+import { solveFromString } from "./utils/dlx";
 
 export default function Home() {
 
@@ -14,6 +15,12 @@ export default function Home() {
   }
 
   function handleRun() {
+    const board_string = board.join().replaceAll(",", "");
+    const sol = solveFromString(board_string);
+    if (sol !== null) {
+      const new_board = sol.flat(Infinity);
+      setBoard(new_board);
+    }
   }
 
   function handleCellClick(index: number) {
