@@ -9,6 +9,13 @@ export default function Home() {
 
   const gridRef = useRef<HTMLDivElement>(null);
 
+  function handleClear() {
+    setBoard(Array(81).fill(0));
+  }
+
+  function handleRun() {
+  }
+
   function handleCellClick(index: number) {
     setSelected(index);
   }
@@ -124,6 +131,7 @@ export default function Home() {
         ">
           {/* Run */}
           <button
+            onClick={() => handleRun()}
             className="
             bg-control-run hover:bg-control-run-hover active:bg-control-run-active
             text-control-run-text
@@ -137,7 +145,7 @@ export default function Home() {
           </button>
           {/* Clear */}
           <button
-            onClick={() => setBoard(Array(81).fill(0))}
+            onClick={() => handleClear()}
             className="
             text-control-clear-text
             bg-control-clear hover:bg-control-clear-hover active:bg-control-clear-active
