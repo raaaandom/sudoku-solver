@@ -20,6 +20,12 @@ export default function Home() {
     setSelected(index);
   }
 
+  function writeSelected(value: number) {
+    const newBoard = [...board];
+    newBoard[selected] = value;
+    setBoard(newBoard);
+  }
+
   useEffect(() => {
     function handleClickOutside(e: MouseEvent) {
       if (gridRef.current && !gridRef.current.contains(e.target as Node))
@@ -39,10 +45,7 @@ export default function Home() {
 
       // number input
       if (num_keys.includes(e.key)) {
-        // TODO: move to a dedicated function
-        const newBoard = [...board];
-        newBoard[selected] = e.key;
-        setBoard(newBoard);
+        writeSelected(Number(e.key));
       }
       // escape deselection
       else if (e.key === 'Escape') {
@@ -66,10 +69,7 @@ export default function Home() {
       }
       // number deletion
       else if (e.key === 'Backspace') {
-        // TODO: move to a dedicated function
-        const newBoard = [...board];
-        newBoard[selected] = 0;
-        setBoard(newBoard);
+        writeSelected(Number(0));
       }
 
     }
