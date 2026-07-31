@@ -27,6 +27,6 @@ A fast, interactive web-based Sudoku solver built with React and Tailwind CSS on
 3. **Solve:** Click the **Run** button to instantly calculate and display the solution.
 4. **Reset:** Click the **Clear** button to wipe the board completely and start over.
 
-## Known Issues / Upcoming Features
-There is no way of inputting numbers from mobile. I'm working on a fix, don't worry!
-Arbitrary grid size is also in the works, although it might make the ui unbearable from a mobile perspective
+## TODO LIST
+Support any grid size
+Fix CSS after number input update
